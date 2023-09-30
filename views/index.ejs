@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Todo</title>
+</head>
+<body>
+    
+    <div class="col justify-content-center mt-5">
+    <form action="/add" method="post">
+        <div class="form-group justify-content-center mt-5 ">
+            <label for="task" class="display-2 row justify-content-center">Enter your Todo</label>
+            <div class="row justify-content-center"><input type="text" class="form-control mt-5 col-sm-8 justify-content-center" id="task" name="task" placeholder="Enter here"></div>
+        </div>
+        <div class="row justify-content-center">
+          <button type="submit" class="btn btn-primary mt-5 col-3 align-self-center">Submit</button>
+        </div>
+        <div class="col-fluid justify-content-center mt-5">
+        <h1 class="display-3 row justify-content-center">Added Task</h1>
+        <% if(locals.task.length!=0) {%>
+            <% for(var i=0;i<task.length;i++){ %>
+                <div class="form-check col d-flex justify-content-center align-items-center mt-3">
+                    <div class="col-auto">
+                        <div class="justify-content-start"><input class="form-check-input" name="check" type="checkbox" value="<%= task[i] %>" id="defaultCheck1">
+                        <label class="form-check-label " style="font-style: italic; font-size: large;" for="defaultCheck1"> <%= task[i] %>
+                        </label>
+                        </div>
+                    </div>
+                </div>  
+            <% }%>
+            <div class=" row justify-content-center">
+            <button type="submit" formaction="/remove" class="btn btn-primary mt-5 col-3 align-self-center">Remove</button></div>
+        <%}else{%>
+            <p class="display-4 row justify-content-center" style="font-size: large;">Nothing added yet</p>
+        <%} %>
+        </div>
+        <!-- <div class="row justify-content-center">
+            <button type="submit" class="btn btn-primary mt-5 col-3 align-self-center">Remove</button>
+          </div> -->
+    </form>
+    <div class="col justify-content-center mt-5">
+        <h1 class="display-3 row justify-content-center">Completed Tasks</h1>
+        <% if(locals.complete.length!=0) {%>
+            <% for(var i=0;i<complete.length;i++){ %>
+                <div class="form-check col d-flex justify-content-center align-items-center mt-3">
+                    <div class="col-auto">
+                        <label class="form-check-label " style="font-style: italic; font-size: large;" for="defaultCheck1" name="check"> <%= complete[i] %>
+                        </label>
+                    </div>
+                </div>  
+            <% }%>
+        <%}else{%>
+            <p class="display-4 row justify-content-center mt-3" style="font-size: large;">Nothing Completed yet</p>
+        <%} %>
+    </div> 
+    </div>
+</body>
+</html>
